@@ -26,8 +26,6 @@ public class Review {
 	@Id
 	private ObjectId id;
 
-	private String businessName ;
-
 	private String comment;
 
 	private Boolean recommend;
@@ -36,8 +34,7 @@ public class Review {
 	private LocalDateTime updated;
 
 
-	public Review(String businessName,String comment,Boolean recommend, LocalDateTime created, LocalDateTime updated) {
-		this.businessName=businessName;
+	public Review( String comment,Boolean recommend, LocalDateTime created, LocalDateTime updated) {
 		this.comment = comment;
 		this.recommend= recommend;
 		this.created = created;

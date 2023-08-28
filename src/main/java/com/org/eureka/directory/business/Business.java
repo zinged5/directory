@@ -20,15 +20,16 @@ public class Business {
 	@Id
 	private ObjectId id;
 	private String name;
+	@DocumentReference
 	private List<Category> categories;
-	private Date established;
+	private String established;
 	private String website;
 
 	private List<String> services;
 	@DocumentReference
 	private List<Review> reviews;
 
-	public Business(String name, List<Category> categories, Date established, String website, List<String> services, List<Review> reviews) {
+	public Business(String name, List<Category> categories, String established, String website, List<String> services, List<Review> reviews) {
 		this.name = name;
 		this.categories = categories;
 		this.established = established;

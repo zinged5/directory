@@ -3,6 +3,8 @@ package com.org.eureka.directory.business;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,9 +24,19 @@ public class BusinessService {
 	public Optional<Business> findBusinessByName(String name) {
 		return repository.findBusinessByName(name);
 	};
+	public List<Business> findBusinessesByCategory(String name) {
+		Query query =  new Query();
+//		query.addCriteria(Criteria.where("category").regex(name));
+		query.addCriteria(Criteria.where("categories").in(name));
 
-	public Optional<List<Business>> findBusinessByCategory(Category name){return repository.findBusinessByCategory(name);};
+		List<Business> businessesWithCategory = mongoTemplate.find(query,Business.class);
 
-	public Optional<List<Review>> findReviewsByBusinessName(Business name){return repository.findReviewsByBusinessName(name);};
+		return businessesWithCategory;
+	};
+
+
+//	public Optional<List<Business>> findBusinessByCategory(String name){return repository.findBusinessByCategory(name);};
+
+//	public Optional<List<Review>> findReviewsByBusinessName(String name){return repository.findReviewsByBusinessName(name);};
 
 }

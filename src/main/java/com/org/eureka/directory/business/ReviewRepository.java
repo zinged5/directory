@@ -10,5 +10,4 @@ import java.util.Optional;
 @Repository
 public interface ReviewRepository extends MongoRepository<Review, ObjectId> {
 
-	Optional<List<Review>> findReviewsByBusinessName(Business name);
 }

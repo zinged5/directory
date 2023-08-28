@@ -17,16 +17,19 @@ public class CategoryController {
 	@Autowired
 	private CategoryService service;
 
-	@GetMapping("/categories")
+
+	@GetMapping()
 	public ResponseEntity<List<Category>> getCategories(){
 		return new ResponseEntity<List<Category>>(service.findAllCategories(), HttpStatus.OK);
 
 	};
 
-	@GetMapping("/categories/{name}")
-	public ResponseEntity<Optional<Business>>getCategory(@PathVariable Category name){
+	@GetMapping("/{name}")
+	public ResponseEntity<Category>getCategory(@PathVariable String name){
 
-		return new ResponseEntity<Optional<Business>>(service.findCategoryByName(name), HttpStatus.OK);
+		return new ResponseEntity<Category>(service.findCategoryByName(name), HttpStatus.OK);
 
 	};
+
+
 }

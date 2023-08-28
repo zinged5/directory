@@ -1,5 +1,6 @@
 package com.org.eureka.directory.business;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.type.MapLikeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,13 +23,13 @@ public class ReviewController {
 	private ReviewService reviewService;
 
 
-	@GetMapping("/business/{name}/reviews")
-	public ResponseEntity<Optional<List<Review>>> getReviews(@PathVariable Business name) {
-		return new ResponseEntity<Optional<List<Review>>>(service.findReviewsByBusinessName(name), HttpStatus.OK);
-	}
+//	@GetMapping("/business/{name}/reviews")
+//	public ResponseEntity<Optional<List<Review>>> getReviews(@PathVariable String name) {
+//		return new ResponseEntity<Optional<List<Review>>>(service.findReviewsByBusinessName(name), HttpStatus.OK);
+//	}
 		@PostMapping()
-		public ResponseEntity<Review>createReview (@RequestBody Review payload){
-			return new ResponseEntity<Review>(reviewService.createReview(payload), HttpStatus.OK);
+		public ResponseEntity<Review>createReview (@RequestBody Map<String,String> payload) throws JsonProcessingException {
+			return new ResponseEntity<Review>(reviewService.createReview(payload.get("name"),payload.get("review")), HttpStatus.OK);
 		};
 
 	};

@@ -29,13 +29,14 @@ public class Business {
 	@DocumentReference
 	private List<Review> reviews;
 
-	public Business(String name, List<Category> categories, String established, String website, List<String> services, List<Review> reviews) {
+	public Business(String name,List<Review> reviews, String established, String website, List<String> services) {
 		this.name = name;
-		this.categories = categories;
+//		this.categories = categories;
 		this.established = established;
 		this.website = website;
 		this.services = services;
-		this.reviews = reviews;
+		this.reviews= reviews;
+
 	}
 
 }

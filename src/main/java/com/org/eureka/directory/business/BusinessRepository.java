@@ -10,7 +10,6 @@ import java.util.Optional;
 @Repository
 public interface BusinessRepository extends MongoRepository<Business, ObjectId> {
 	Optional<Business>findBusinessByName(String name);
-
 //	Optional<List<Business>>findBusinessByCategory(Category name);
 
 //	Optional<List<Review>>findReviewsByBusinessName(String name);

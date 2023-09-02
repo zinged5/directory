@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/businesses")
+@RequestMapping("/")
 public class BusinessController {
 	@Autowired
 	private BusinessService service;
@@ -18,23 +18,12 @@ public class BusinessController {
 	@Autowired
 	private CategoryService categoryService;
 
-//	@GetMapping()
-//	public ResponseEntity<List<Business>> getBusinesses(){
-//		return new ResponseEntity<List<Business>>(service.findAllBusinesses(), HttpStatus.OK);
-//
-//	}
 	@GetMapping()
 	public List<Business> getBusinesses(){
 		return service.findAllBusinesses();
 
 	}
 
-//	@GetMapping("/")
-//	public ResponseEntity<Optional<List<Business>>>getBusinessByCategory(@PathVariable String name){
-//		Category cname= categoryService.findBusinessByCategory(name);
-//		return new ResponseEntity<Optional<List<Business>>>(service.findBusinessByCategory(Category name), HttpStatus.OK);
-//
-//	};
 	@GetMapping("/{name}")
 	public ResponseEntity<Optional<Business>>getBusiness(@PathVariable String name){
 
